@@ -1,0 +1,18 @@
+.orField {
+  font-weight: 700;
+}
+
+.explanationField {
+  font-weight: 300;
+  text-align: justify;
+  margin-top: 0.5rem;
+}
+
+input {
+  width: 30vw;
+}
+
+textarea {
+  width: 30vw;
+  height: 10vh;
+}

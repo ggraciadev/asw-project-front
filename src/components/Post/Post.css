@@ -1,0 +1,34 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem;
+  margin: 1rem auto;
+  max-width: 80%;
+  border: 1px solid #e5e5e5;
+}
+
+.like {
+  object-fit: contain;
+  height: 1.2em;
+}
+
+.like:hover {
+  cursor: pointer;
+}
+
+.postHeader {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0.5em;
+}
+
+.postInfo {
+  align-items: center;
+  font-size: 0.9em;
+  color: rgb(107, 105, 105);
+}
