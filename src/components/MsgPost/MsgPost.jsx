@@ -21,19 +21,22 @@ const MsgPost = (props) => {
     setIsLiked(!isLiked);
   };
   return (
-    <div>
-      <div className="postInfo">
-      <img className="like" onClick={handleLike} src={isLiked ? heart : blankHeart} />
-      <span>{likes} likes by </span>
+    <div className="commentContainer">
+      <div className="commentInfo">
+        <img className="like" onClick={handleLike} src={isLiked ? heart : blankHeart} />
+        &nbsp;
+        <span>{likes} likes by {"  "}</span>
+        &nbsp;
         <Link to={{ pathname: `/user/${author}` }}>{author}</Link>
+        &nbsp;  
         <span>
           {" | "}
           {creationTime}
         </span>
       </div>
-      <span>{message}</span>
-      <div>reply</div>
-      <div style = {{position: "relative", left: 25 }}>
+      <div className="msgComment">{message}</div>
+      <div className="postInfo">reply</div>
+      <div style = {{position: "relative", left: 45 }}>
         {comments.map((comment, index) => {
           return (
             <MsgPost

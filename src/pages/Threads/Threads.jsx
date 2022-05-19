@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MsgPost from "../../components/MsgPost/MsgPost";
 import usePosts from "../../hooks/usePosts";
+import "./Threads.css";
 
 const Threads = () => {
     const [comments, setComments] = useState([]);
@@ -16,7 +17,7 @@ const Threads = () => {
     }, []);
 
     return (
-        <div>
+        <div className="threadsContainer">
             {comments.map((comment, index) => {
                 return (
                     <MsgPost

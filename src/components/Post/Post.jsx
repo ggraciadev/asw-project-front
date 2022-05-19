@@ -1,5 +1,6 @@
 import "./Post.css";
 import { useState } from "react";
+import usePosts from "../../hooks/usePosts";
 import { Link } from "react-router-dom";
 import heart from "../../images/heart.png";
 import blankHeart from "../../images/blank-heart.png";
