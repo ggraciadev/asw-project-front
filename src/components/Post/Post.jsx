@@ -37,8 +37,9 @@ const Post = (props) => {
         <Link to={{ pathname: `/user/${username}`}}>{username}</Link>
         <span>
           {" | "}
-          {creationTime} | {commentsNum} comments
+          {creationTime} {" | "}
         </span>
+        <Link to={{ pathname: `/item?id=${id}`}}>{commentsNum} comments</Link> 
       </div>
     </div>
   );
