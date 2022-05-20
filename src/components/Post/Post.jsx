@@ -13,34 +13,45 @@ const Post = (props) => {
     url,
     msg,
     likes,
+    userLiked,
     username,
     creationTime,
     commentsNum,
     comments,
   } = props;
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(userLiked);
   const handleLike = () => {
-    setIsLiked(!isLiked);
+    //handleLiked
+    //setIsLiked(!isLiked);
   };
   return (
     <div className="post">
       <div className="postHeader">
-        <img className="like" onClick={handleLike} src={isLiked ? heart : blankHeart} />
+        <img
+          className="like"
+          onClick={handleLike}
+          src={isLiked ? heart : blankHeart}
+        />
         <span className="title">
-          {index}. {title}{" "}
+          {index ? `${index}.` : null} {title}{" "}
         </span>
         {url ? <span>({url})</span> : null}
       </div>
       <div className="postInfo">
-        <span>
-          {likes} likes by {" "}
-        </span>
-        <Link to={{ pathname: `/user/${username}`}}>{username}</Link>
+        <div>{likes} likes by </div>
+        &nbsp;
+        <Link className="link" to={{ pathname: `/user/${username}` }}>
+          {username}
+        </Link>
+        &nbsp;
         <span>
           {" | "}
           {creationTime} {" | "}
         </span>
-        <Link to={{ pathname: `/item?id=${id}`}}>{commentsNum} comments</Link> 
+        &nbsp;
+        <Link className="link" to={{ pathname: `/item?id=${id}` }}>
+          {commentsNum} comments
+        </Link>
       </div>
     </div>
   );

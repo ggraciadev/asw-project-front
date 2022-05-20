@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./MsgPost.css";
 import { useState } from "react";
+import usePosts from "../../hooks/usePosts";
 import heart from "../../images/heart.png";
 import blankHeart from "../../images/blank-heart.png";
 
@@ -10,12 +11,15 @@ const MsgPost = (props) => {
     id,
     postID,
     author,
-    creationTime,
     parentID,
     message,
     likes,
     comments,
   } = props;
+  let {creationTime} = props;
+
+  const { prettifyDate } = usePosts();
+  creationTime = prettifyDate(creationTime);
   const [isLiked, setIsLiked] = useState(false);
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -27,15 +31,17 @@ const MsgPost = (props) => {
         &nbsp;
         <span>{likes} likes by {"  "}</span>
         &nbsp;
-        <Link to={{ pathname: `/user/${author}` }}>{author}</Link>
+        <Link className="link" to={{ pathname: `/user/${author}` }}>{author}</Link>
         &nbsp;  
         <span>
           {" | "}
           {creationTime}
         </span>
       </div>
-      <div className="msgComment">{message}</div>
-      <div className="postInfo">reply</div>
+      <div className="commentMsg">
+      <span className="msgComment">{message}</span>
+      <span className="replyMsg">reply</span>
+      </div>
       <div style = {{position: "relative", left: 45 }}>
         {comments.map((comment, index) => {
           return (

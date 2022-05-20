@@ -20,7 +20,7 @@ const NavBar = () => {
         </Link>
       </div>
       <Link className="link" to={{ pathname: `/profile/gerard.madrid`}}>
-          <Button>Login</Button>
+          <Button>Gerard Madrid</Button>
         </Link>
     </nav>
   );

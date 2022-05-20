@@ -1,19 +1,31 @@
 .commentContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 3% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 3% 0;
 }
 
 .commentInfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  color: rgb(107, 105, 105);
+}
 
+.commentMsg {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1.4em;
+  align-items: flex-start;
+}
+
+.msgComment {
+  font-weight: 500;
 }
 
 .replyMsg {
-    color: gray;
+  font-size: 0.9em;
+  color: rgb(107, 105, 105);
 }

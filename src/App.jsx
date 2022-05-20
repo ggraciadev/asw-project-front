@@ -7,6 +7,7 @@ import Threads from './pages/Threads/Threads';
 import Ask from './pages/Ask/Ask';
 import User from './pages/User/User';
 import Profile from './pages/Profile/Profile';
+import Item from './pages/Item/Item';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/ask" element={<Ask/>}/>
           <Route path="/user/:username" element={<User/>}/>
           <Route path="/profile/:username" element={<Profile/>}/>
+          <Route path="/item" element={<Item/>}/>
       </Routes>
     </div>
   );

@@ -1,0 +1,14 @@
+.itemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: auto;
+  max-width: 50%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 3% 0;
+}

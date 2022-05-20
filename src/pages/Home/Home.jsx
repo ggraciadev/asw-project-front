@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./Home.css";
 import Post from "../../components/Post/Post";
 import usePosts from "../../hooks/usePosts";
 import { Button } from "@mui/material";
@@ -27,7 +28,7 @@ const Home = () => {
     }, [isClicked]);
     
   return (
-    <div>
+    <div className="postContainer">
       <Button onClick={handleClick}>Ordered by {orderby}</Button>
       {posts.map((post, index) => {
         return (
@@ -39,6 +40,7 @@ const Home = () => {
             url={post.url}
             msg={post.msg}
             likes={post.likes}
+            userLiked={post.userLiked}
             username={post.username}
             creationTime={post.creationTime}
             commentsNum={post.commentsNum}

@@ -27,7 +27,7 @@ const Ask = () => {
     }, [isClicked]);
     
   return (
-    <div>
+    <div className="postContainer">
       <Button onClick={handleClick}>Ordered by {orderby}</Button>
       {posts.map((post, index) => {
         return (
@@ -39,6 +39,7 @@ const Ask = () => {
             url={post.url}
             msg={post.msg}
             likes={post.likes}
+            userLiked={post.userLiked}
             username={post.username}
             creationTime={post.creationTime}
             commentsNum={post.commentsNum}

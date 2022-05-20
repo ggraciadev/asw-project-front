@@ -39,9 +39,13 @@ const usePosts = () => {
   const getAllPosts = async (orderby) => {
     try {
       const result = await axios.get(`${API_HOST}/api/post/all`, {
-        params: { orderby: orderby },
+        params: { orderby: orderby, loggedUser: "gerard.madrid" },
       });
-      return result.data.posts;
+      const posts = result.data.posts;
+      posts.map((post) => {
+        post.creationTime = prettifyDate(post.creationTime);
+      });
+      return posts;
     } catch (error) {
       console.log(error);
     }
@@ -50,9 +54,13 @@ const usePosts = () => {
   const getAllAskPosts = async (orderby) => {
     try {
       const result = await axios.get(`${API_HOST}/api/post/ask`, {
-        params: { orderby: orderby },
+        params: { orderby: orderby, loggedUser: "gerard.madrid" },
       });
-      return result.data.posts;
+      const posts = result.data.posts;
+      posts.map((post) => {
+        post.creationTime = prettifyDate(post.creationTime);
+      });
+      return posts;
     } catch (error) {
       console.log(error);
     }
@@ -61,9 +69,11 @@ const usePosts = () => {
   const getPostById = async (postId) => {
     try {
       const result = await axios.get(`${API_HOST}/api/post/item`, {
-        params: { post_id: postId },
+        params: { id: postId, loggedUser: "gerard.madrid"},
       });
-      return result.data.post;
+      const post = result.data.post;
+      post.creationTime = prettifyDate(post.creationTime);
+      return post;
     } catch (error) {
       console.log(error);
     }
@@ -86,6 +96,7 @@ const usePosts = () => {
       const result = await axios.get(`${API_HOST}/api/post/threads`, {
         params: { username: "gerard.madrid" },
       });
+      const comments = result.data.comments;
       return result.data.comments;
     } catch (error) {
       console.log(error);
