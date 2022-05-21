@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   margin: auto;
-  max-width: 50%;
+  max-width: 35%;
 }
 
 .formContainer {
@@ -11,4 +11,11 @@
   flex-direction: column;
   align-items: flex-start;
   margin: 3% 0;
+}
+
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
 }

@@ -1,6 +1,7 @@
 import "./Post.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import usePosts from "../../hooks/usePosts";
+import useUser from "../../hooks/useUser";
 import { Link } from "react-router-dom";
 import heart from "../../images/heart.png";
 import blankHeart from "../../images/blank-heart.png";
@@ -19,11 +20,20 @@ const Post = (props) => {
     commentsNum,
     comments,
   } = props;
-  const [isLiked, setIsLiked] = useState(userLiked);
-  const handleLike = () => {
-    //handleLiked
-    //setIsLiked(!isLiked);
+  const { votePost } = useUser();
+  const [isLiked, setIsLiked] = useState();
+  const [likesState, setLikesState] = useState();
+  const handleLike = async () => {
+    await votePost(id);
+    isLiked ? setLikesState(likesState - 1) : setLikesState(likesState + 1);
+    setIsLiked(!isLiked);
   };
+
+  useEffect(() => {
+    setLikesState(likes);
+    setIsLiked(userLiked);
+  }, [likes]);
+
   return (
     <div className="post">
       <div className="postHeader">
@@ -38,9 +48,9 @@ const Post = (props) => {
         {url ? <span>({url})</span> : null}
       </div>
       <div className="postInfo">
-        <div>{likes} likes by </div>
+        <div>{likesState} likes by </div>
         &nbsp;
-        <Link className="link" to={{ pathname: `/user/${username}` }}>
+        <Link className="link" to={{ pathname: `/user?username=${username}` }}>
           {username}
         </Link>
         &nbsp;

@@ -1,7 +1,4 @@
-.threadsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: auto;
-    max-width: 50%;
+.postContainer {
+  display: flex;
+  flex-direction: column;
 }

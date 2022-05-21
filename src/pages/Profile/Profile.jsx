@@ -1,7 +1,7 @@
 import "./Profile.css";
 import Button from "@mui/material/Button";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import useUser from "../../hooks/useUser";
 
 const Profile = () => {
@@ -9,7 +9,8 @@ const Profile = () => {
   const [input, setInput] = useState({});
   const [isEditable, setIsEditable] = useState(false);
   const { getUser } = useUser();
-  const { username } = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const username = searchParams.get("username");
 
   const handleChange = (e) => {
     setInput({
@@ -55,7 +56,9 @@ const Profile = () => {
               onChange={handleChange}
             />
           ) : (
-            <span className="fieldMsg">{user.aboutMe ? user.aboutMe : "-"}</span>
+            <span className="fieldMsg">
+              {user.aboutMe ? user.aboutMe : "-"}
+            </span>
           )}
         </div>
         <div className="infoField">
@@ -89,7 +92,9 @@ const Profile = () => {
               onChange={handleChange}
             />
           ) : (
-            <a className="fieldMsg" href={user.linUsername}>{user.linUsername ? user.linUsername : "-"}</a>
+            <a className="fieldMsg" href={user.linUsername}>
+              {user.linUsername ? user.linUsername : "-"}
+            </a>
           )}
         </div>
         <div className="infoField">
@@ -106,8 +111,10 @@ const Profile = () => {
               onChange={handleChange}
             />
           ) : (
-            <a className="fieldMsg" href={user.ghUsername}>{user.ghUsername ? user.ghUsername : "-"}</a>
-            )}
+            <a className="fieldMsg" href={user.ghUsername}>
+              {user.ghUsername ? user.ghUsername : "-"}
+            </a>
+          )}
         </div>
         <div className="infoField">
           <span className="fieldTitle">Api-key: </span>
@@ -115,7 +122,12 @@ const Profile = () => {
         </div>
         <br />
         {isEditable ? (
-          <Button type="submit" variant="contained" color="primary"  onClick={() => setIsEditable(!isEditable)}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            onClick={() => setIsEditable(!isEditable)}
+          >
             Submit
           </Button>
         ) : (

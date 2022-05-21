@@ -4,30 +4,30 @@ import usePosts from "../../hooks/usePosts";
 import { Button } from "@mui/material";
 
 const Ask = () => {
-    const [posts, setPosts] = useState([]);
-    const [orderby, setOrderby] = useState("likes");
-    const [isClicked, setIsClicked] = useState(false);
-    const { getAllAskPosts } = usePosts();
+  const [posts, setPosts] = useState([]);
+  const [orderby, setOrderby] = useState("likes");
+  const [isClicked, setIsClicked] = useState(false);
+  const { getAllAskPosts } = usePosts();
 
-    const handleClick = () => {
-        if(orderby == "likes"){
-            setOrderby("creationTime");
-        }else{
-            setOrderby("likes");
-        }
-        setIsClicked(!isClicked);
-    };
+  const handleClick = () => {
+    if (orderby == "likes") {
+      setOrderby("creationTime");
+    } else {
+      setOrderby("likes");
+    }
+    setIsClicked(!isClicked);
+  };
 
-    useEffect(() => {
-        async function fetchData() {
-            const result = await getAllAskPosts(orderby);
-            setPosts(result);
-        }
-        fetchData();
-    }, [isClicked]);
-    
+  useEffect(() => {
+    async function fetchData() {
+      const result = await getAllAskPosts(orderby);
+      setPosts(result);
+    }
+    fetchData();
+  }, [isClicked]);
+
   return (
-    <div className="postContainer">
+    <div className="mainContainer">
       <Button onClick={handleClick}>Ordered by {orderby}</Button>
       {posts.map((post, index) => {
         return (

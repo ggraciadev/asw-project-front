@@ -1,13 +1,15 @@
 import "./User.css";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useUser from "../../hooks/useUser";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const User = () => {
-  const { username } = useParams();
   const { getUser } = useUser();
   const [user, setUser] = useState({});
-  /* const { username, creationTime, aboutMe, phone, linUsername, ghUsername } = user; */
+  const [searchParams, setSearchParams] = useSearchParams();
+  const username = searchParams.get("username");
 
   useEffect(() => {
     async function fetchData() {
@@ -37,12 +39,21 @@ const User = () => {
       </div>
       <div className="infoField">
         <span className="fieldTitle">LinkedIn: </span>
-        <a className="fieldMsg" href={user.linUsername}>{user.linUsername ? user.linUsername : "-"}</a>
+        <a className="fieldMsg" href={user.linUsername}>
+          {user.linUsername ? user.linUsername : "-"}
+        </a>
       </div>
       <div className="infoField">
         <span className="fieldTitle">Github: </span>
-        <a className="fieldMsg" href={user.ghUsername}>{user.ghUsername ? user.ghUsername : "-"}</a>
+        <a className="fieldMsg" href={user.ghUsername}>
+          {user.ghUsername ? user.ghUsername : "-"}
+        </a>
       </div>
+      <Link className="link" to={{ pathname: `/threads?username=${username}` }}>
+        <Button variant="contained" color="primary">
+          Show submissions
+        </Button>
+      </Link>
     </div>
   );
 };
