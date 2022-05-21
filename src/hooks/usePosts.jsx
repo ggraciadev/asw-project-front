@@ -1,16 +1,10 @@
 import axios from "axios";
-/* axios.defaults.headers.common["apikey"] = "4ce9434e63b90aa82bb793cd58a478f0";
- */
+
 const usePosts = () => {
+  //const API_HOST = "http://localhost:5000";
   const API_HOST = "https://proyecto-asw-api.herokuapp.com";
   const API_KEY = "4ce9434e63b90aa82bb793cd58a478f0";
-
-  const api = axios.create({
-    baseURL: API_HOST,
-    headers: {
-      apikey: API_KEY,
-    },
-  });
+  axios.defaults.headers.post["apikey"] = "4ce9434e63b90aa82bb793cd58a478f0";
 
   const getAllPosts = async (orderby) => {
     try {
@@ -128,7 +122,7 @@ const usePosts = () => {
 
   const submitPost = async (post) => {
     try {
-      const result = await api.post(`/api/post/submit`, {
+      const result = await axios.post(`${API_HOST}/api/post/submit`, {
         title: post.title,
         url: post.url,
         msg: post.message,
@@ -147,7 +141,6 @@ const usePosts = () => {
       const result = await axios.post(`${API_HOST}/api/post/comment`, {
         message: comment.message,
         username: "gerard.madrid",
-        apikey: API_KEY,
         postid: comment.postId,
         parentid: comment.parentId,
       });
@@ -164,7 +157,6 @@ const usePosts = () => {
       const result = await axios.post(`${API_HOST}/api/post/reply`, {
         message: comment.message,
         username: "gerard.madrid",
-        apikey: API_KEY,
         postid: comment.postId,
         parentid: comment.parentId,
       });

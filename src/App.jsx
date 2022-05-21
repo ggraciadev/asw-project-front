@@ -10,7 +10,6 @@ import Profile from "./pages/Profile/Profile";
 import Item from "./pages/Item/Item";
 import { Routes, Route } from "react-router-dom";
 import LikedPosts from "./pages/LikedPosts/LikedPosts";
-import LikedComments from "./pages/LikedComments/LikedComments";
 import Reply from "./pages/Reply/Reply";
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/item" element={<Item />} />
         <Route path="/likedPosts" element={<LikedPosts />} />
-        {/*         <Route path="/likedComments" element={<LikedComments />} /> */}
         <Route path="/reply" element={<Reply />} />
       </Routes>
     </div>

@@ -42,10 +42,14 @@ const Post = (props) => {
           onClick={handleLike}
           src={isLiked ? heart : blankHeart}
         />
-        <span className="title">
+        <Link to={{ pathname: `/item?id=${id}` }} className="title">
           {index ? `${index}.` : null} {title}{" "}
-        </span>
-        {url ? <span>({url})</span> : null}
+        </Link>
+        {url ? (
+          <a href={url} className="blackLink">
+            ({url})
+          </a>
+        ) : null}
       </div>
       <div className="postInfo">
         <div>{likesState} likes by </div>

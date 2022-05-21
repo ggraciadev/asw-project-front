@@ -10,7 +10,7 @@ const Threads = () => {
   const [submissions, setSubmissions] = useState([]);
   const { getUserPosts, getUserComments } = usePosts();
   const [isClicked, setIsClicked] = useState(true);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const username = searchParams.get("username");
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const Threads = () => {
             })}
           </div>
         ) : (
-          <div>
+          <div className="postContainer">
             {submissions.map((comment, index) => {
               return (
                 <Comment

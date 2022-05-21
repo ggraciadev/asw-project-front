@@ -19,10 +19,9 @@ const LikedPosts = () => {
         const result = await getLikedComments();
         setPosts(result);
       }
-      console.log("hola");
     }
     fetchData();
-  }, [isClicked]);
+  }, [posts, isClicked]);
 
   return (
     <div className="mainContainer">

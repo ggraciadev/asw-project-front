@@ -8,8 +8,8 @@ const Profile = () => {
   const [user, setUser] = useState({});
   const [input, setInput] = useState({});
   const [isEditable, setIsEditable] = useState(false);
-  const { getUser } = useUser();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { getUser, updateUser } = useUser();
+  const [searchParams] = useSearchParams();
   const username = searchParams.get("username");
 
   const handleChange = (e) => {
@@ -18,10 +18,21 @@ const Profile = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(input);
-    //Aqui aniria el submit hook
+
+  const handleEdit = async () => {
+    if (!isEditable) {
+      setInput({
+        ...input,
+        username: user.username,
+        about: user.aboutMe,
+        phone: user.phone,
+        linkedIn: user.linUsername,
+        github: user.ghUsername,
+      });
+    } else {
+      setUser(await updateUser(input));
+    }
+    setIsEditable(!isEditable);
   };
 
   useEffect(() => {
@@ -30,11 +41,11 @@ const Profile = () => {
       setUser(result);
     }
     fetchData();
-  }, [username]);
+  }, [user]);
 
   return (
     <div className="infoContainer">
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="infoField">
           <span className="fieldTitle">Email: </span>
           <span className="fieldMsg">{user.email}</span>
@@ -44,9 +55,7 @@ const Profile = () => {
           <span className="fieldMsg">{user.creationTime}</span>
         </div>
         <div className="infoField">
-          <label for="about" className="fieldTitle">
-            About:{" "}
-          </label>
+          <label className="fieldTitle">About: </label>
 
           {isEditable ? (
             <textarea
@@ -62,9 +71,7 @@ const Profile = () => {
           )}
         </div>
         <div className="infoField">
-          <label for="phone" className="fieldTitle">
-            Phone:{" "}
-          </label>
+          <label className="fieldTitle">Phone: </label>
           {isEditable ? (
             <input
               type="text"
@@ -79,9 +86,7 @@ const Profile = () => {
           )}
         </div>
         <div className="infoField">
-          <label for="linkedIn" className="fieldTitle">
-            LinkedIn:{" "}
-          </label>
+          <label className="fieldTitle">LinkedIn: </label>
           {isEditable ? (
             <input
               type="text"
@@ -98,9 +103,7 @@ const Profile = () => {
           )}
         </div>
         <div className="infoField">
-          <label for="github" className="fieldTitle">
-            Github:{" "}
-          </label>
+          <label className="fieldTitle">Github: </label>
           {isEditable ? (
             <input
               type="text"
@@ -121,24 +124,10 @@ const Profile = () => {
           <span className="fieldMsg">{user.apikey}</span>
         </div>
         <br />
-        {isEditable ? (
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={() => setIsEditable(!isEditable)}
-          >
-            Submit
-          </Button>
-        ) : (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setIsEditable(!isEditable)}
-          >
-            Edit
-          </Button>
-        )}
+
+        <Button variant="contained" color="primary" onClick={handleEdit}>
+          {isEditable ? "Save" : "Edit"}
+        </Button>
       </form>
     </div>
   );

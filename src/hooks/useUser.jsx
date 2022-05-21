@@ -3,8 +3,10 @@ import axios from "axios";
 import usePosts from "./usePosts";
 
 const useUser = () => {
+  //const API_HOST = "http://localhost:5000";
   const API_HOST = "https://proyecto-asw-api.herokuapp.com";
   const API_KEY = "4ce9434e63b90aa82bb793cd58a478f0";
+  axios.defaults.headers.put["apikey"] = "4ce9434e63b90aa82bb793cd58a478f0";
   const { prettifyDate } = usePosts();
   const getUser = async (username) => {
     try {
@@ -19,10 +21,25 @@ const useUser = () => {
     }
   };
 
+  const updateUser = (user) => {
+    try {
+      const result = axios.put(`${API_HOST}/api/user/`, {
+        username: user.username,
+        aboutme: user.about,
+        phone: user.phone,
+        linkedin: user.linkedIn,
+        github: user.github,
+      });
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const votePost = async (id) => {
     try {
       const result = await axios.put(
-        `${API_HOST}/api/user/votePost`,  { apikey: API_KEY }, { params: { postid: id, username: "gerard.madrid" } }
+        `${API_HOST}/api/user/votePost?postid=${id}&username=gerard.madrid`
       );
       return result.data;
     } catch (error) {
@@ -33,7 +50,7 @@ const useUser = () => {
   const voteComment = async (id) => {
     try {
       const result = await axios.put(
-        `${API_HOST}/api/user/voteComment`,  { apikey: API_KEY }, { params: { commentid: id, username: "gerard.madrid" } }
+        `${API_HOST}/api/user/voteComment?commentid=${id}&username=gerard.madrid`
       );
       return result.data;
     } catch (error) {
@@ -41,7 +58,7 @@ const useUser = () => {
     }
   };
 
-  return { getUser, votePost, voteComment };
+  return { getUser, votePost, voteComment, updateUser };
 };
 
 export default useUser;

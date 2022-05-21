@@ -23,6 +23,15 @@
 
 .title {
   margin: 0 0.5em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: none;
+  color: black;
+}
+
+.blackLink {
+  text-decoration: none;
+  color: black;
 }
 
 .postInfo {
