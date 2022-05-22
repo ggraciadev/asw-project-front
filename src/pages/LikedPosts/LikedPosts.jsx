@@ -21,7 +21,7 @@ const LikedPosts = () => {
       }
     }
     fetchData();
-  }, [posts, isClicked]);
+  }, [isClicked]);
 
   return (
     <div className="mainContainer">

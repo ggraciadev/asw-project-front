@@ -50,7 +50,7 @@ const Comment = (props) => {
           {likesState} likes by {"  "}
         </span>
         &nbsp;
-        <Link className="link" to={{ pathname: `/user/${author}` }}>
+        <Link className="link" to={{ pathname: `/user?username=${author}` }}>
           {author}
         </Link>
         &nbsp;
@@ -61,12 +61,18 @@ const Comment = (props) => {
       </div>
       <div className="commentMsg">
         <span className="msgComment">{message}</span>
-        <Link
-          className="link"
-          to={{ pathname: `/reply?cid=${id}&pid=${postID}` }}
-        >
-          {reply ? "Reply" : null}
-        </Link>
+        {!reply ? (
+          <Link className="link" to={{ pathname: `/item?id=${postID}` }}>
+            Go to post
+          </Link>
+        ) : (
+          <Link
+            className="link"
+            to={{ pathname: `/reply?cid=${id}&pid=${postID}` }}
+          >
+            Reply
+          </Link>
+        )}
       </div>
       <div style={{ position: "relative", top: 10, left: 45 }}>
         {comments && comments.length > 0

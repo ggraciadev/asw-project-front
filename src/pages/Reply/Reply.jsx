@@ -4,13 +4,14 @@ import Comment from "../../components/Comment/Comment";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import usePosts from "../../hooks/usePosts";
+import { useNavigate } from "react-router-dom";
 
 const Reply = () => {
   const [input, setInput] = useState({});
-  const { getPostWithComment, replyComment } = usePosts();
-  const [post, setPost] = useState({});
+  const { getPostWithComment, submitComment } = usePosts();
   const [comment, setComment] = useState([]);
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const postId = searchParams.get("pid");
   const commentId = searchParams.get("cid");
 
@@ -18,22 +19,24 @@ const Reply = () => {
     setInput({
       ...input,
       postId: postId,
-      parentId: post.parentID,
+      parentId: commentId,
       [e.target.name]: e.target.value,
     });
   };
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(input);
-    //replyComment(input);
+    setInput({
+      ...input,
+      message: "",
+    });
+    await submitComment(input);
+    navigate("/item?id=" + postId);
   };
 
   useEffect(() => {
     async function fetchData() {
-      console.log("hola");
       const result = await getPostWithComment(postId, commentId);
       console.log(result);
-      setPost(result);
       setComment(result.comments[0]);
     }
     fetchData();

@@ -26,6 +26,10 @@ const Item = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await submitComment(input);
+    setInput({
+      ...input,
+      message: "",
+    });
     setIsInserted(!isInserted);
   };
 
@@ -33,7 +37,6 @@ const Item = () => {
     async function fetchData() {
       const result = await getPostById(postId);
       setPost(result);
-      console.log(post);
       setComments(result.comments);
     }
     fetchData();

@@ -151,22 +151,6 @@ const usePosts = () => {
     }
   };
 
-  const replyComment = async (comment) => {
-    try {
-      console.log(comment);
-      const result = await axios.post(`${API_HOST}/api/post/reply`, {
-        message: comment.message,
-        username: "gerard.madrid",
-        postid: comment.postId,
-        parentid: comment.parentId,
-      });
-      console.log(result.data);
-      return result.data.link;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const prettifyDate = (timeStamp) => {
     let d = new Date(timeStamp);
     d.setHours(d.getHours() + 2);
@@ -212,7 +196,6 @@ const usePosts = () => {
     getPostWithComment,
     submitPost,
     submitComment,
-    replyComment,
   };
 };
 

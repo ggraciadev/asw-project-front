@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import usePosts from "../../hooks/usePosts";
 import "./Submit.css";
 
