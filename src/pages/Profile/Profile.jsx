@@ -74,6 +74,7 @@ const Profile = () => {
           <label className="fieldTitle">Phone: </label>
           {isEditable ? (
             <input
+              id = "phoneInput"
               type="text"
               name="phone"
               placeholder={user.phone}
@@ -89,6 +90,7 @@ const Profile = () => {
           <label className="fieldTitle">LinkedIn: </label>
           {isEditable ? (
             <input
+              id = "linInput"
               type="text"
               name="linkedIn"
               className="inputField"
@@ -106,6 +108,7 @@ const Profile = () => {
           <label className="fieldTitle">Github: </label>
           {isEditable ? (
             <input
+              id = "githubInput"
               type="text"
               name="github"
               placeholder={user.ghUsername}

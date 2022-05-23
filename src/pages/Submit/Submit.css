@@ -8,11 +8,57 @@
   margin-top: 0.5rem;
 }
 
-input {
+label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#urlInput {
   width: 30vw;
+  padding: 10px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  background-image: url('https://icon-library.com/images/chain-icon-png/chain-icon-png-25.jpg');
+  background-position: 8px 8px;
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  padding-left: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;  
+}
+
+.inputField {
+  width: 30vw;
+  padding: 10px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;  
+}
+
+#titleInput {
+  width: 30vw;
+  padding: 10px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  background-image: url('http://cdn.onlinewebfonts.com/svg/img_25701.png');
+  background-position: 12px 12px;
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  padding-left: 40px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;  
 }
 
 textarea {
   width: 30vw;
-  height: 10vh;
+  height: 20vh;
+  padding: 10px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
 }

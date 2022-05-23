@@ -153,7 +153,7 @@ const usePosts = () => {
 
   const prettifyDate = (timeStamp) => {
     let d = new Date(timeStamp);
-    d.setHours(d.getHours() + 2);
+    d.setHours(d.getHours());
     let dNow = new Date();
 
     let result = Math.abs(dNow - d) / 1000 / 3600;

@@ -1,0 +1,44 @@
+#phoneInput {
+    width: 30vw;
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    background-image: url('https://cdn.icon-icons.com/icons2/2248/PNG/512/phone_icon_136322.png');
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+    padding-left: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;  
+}
+
+#linInput {
+    width: 30vw;
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    background-image: url('https://www.iconpacks.net/icons/1/free-linkedin-icon-112-thumb.png');
+    background-position: 10px 7px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    padding-left: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;  
+}
+
+#githubInput {
+    width: 30vw;
+    padding: 10px 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/25/25231.png');
+    background-position: 9px 9px;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    padding-left: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;  
+}

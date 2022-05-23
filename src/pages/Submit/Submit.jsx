@@ -27,6 +27,7 @@ const Submit = () => {
         <div className="infoField">
           <label className="fieldTitle">Title: </label>
           <input
+            id="titleInput" 
             type="text"
             name="title"
             className="inputField"
@@ -37,6 +38,7 @@ const Submit = () => {
         <div className="infoField">
           <label className="fieldTitle">Url: </label>
           <input
+            id="urlInput" 
             type="url"
             name="url"
             className="inputField"
