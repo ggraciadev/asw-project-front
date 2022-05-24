@@ -26,7 +26,7 @@ const LikedPosts = () => {
   return (
     <div className="mainContainer">
       <Button onClick={() => setIsClicked(!isClicked)}>
-        Showing submissions
+        {isClicked ? 'Showing submissions' : 'Showing comments'}
       </Button>
       {isClicked
         ? posts.map((post, index) => {
