@@ -1,5 +1,8 @@
 Aplicació: http://proyecto-asw-front.herokuapp.com
+
 Api: https://proyecto-asw-api.herokuapp.com/api-docs/
+
+Taiga: https://tree.taiga.io/project/ggraciadev-proyecto-asw/backlog
 
 Usuaris Github:
  - Guillem Gràcia Andreu: @ggraciadev
